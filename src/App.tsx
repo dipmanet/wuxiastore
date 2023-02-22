@@ -22,6 +22,7 @@ function App() {
                             path={`:${route.path}`}
                             element={<route.load />}
                         />
+                        
                         <Route path="*" element={<h1>Web page crashed!</h1>} />
                     </Route>
                 ))}

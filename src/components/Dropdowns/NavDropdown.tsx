@@ -1,19 +1,19 @@
 import { useState, useRef, useEffect } from 'react'
-import { createPopper } from '@popperjs/core'
 import { Link } from 'react-router-dom'
 
 interface TypeNavDropDown {
     title: string
     link?: string
     options?: any[]
+    menuColor?: string
 }
 
-const NavDropdown = ({ title, link, options }: TypeNavDropDown) => {
+const NavDropdown = ({ title, link, options, menuColor }: TypeNavDropDown) => {
     const [showNavDropDown, setShowNavDropDown] = useState(false)
     const dropdownRef = useRef<HTMLDivElement>()
 
     useEffect(() => {
-        const handleClickOutside = (event: any): void => {
+        const handleHoverOutside = (event: any): void => {
             if (
                 dropdownRef.current &&
                 !dropdownRef.current.contains(event.target)
@@ -22,24 +22,31 @@ const NavDropdown = ({ title, link, options }: TypeNavDropDown) => {
             }
         }
 
-        document.addEventListener('mousedown', handleClickOutside)
+        document.addEventListener('mouseover', handleHoverOutside)
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside)
+            document.removeEventListener('mouseover', handleHoverOutside)
         }
     }, [])
 
     return (
         <>
-            <div ref={dropdownRef} className="">
+            <div
+                id={`${NavDropdown.name}`}
+                ref={dropdownRef}
+                className="flex flex-col h-full"
+            >
                 <button
-                    className="text-black font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 hover:text-red-500 ease-linear transition-all duration-150"
+                    className={`${
+                        menuColor ? menuColor : 'text-black'
+                    } font-bold uppercase text-sm mx-2 h-full rounded outline-none focus:outline-none hover:text-red-500 ease-linear transition-all duration-150`}
                     type="button"
-                    onClick={() => setShowNavDropDown(!showNavDropDown)}
+                    onMouseOver={() => setShowNavDropDown(true)}
+                    // onMouseOut={() => setShowNavDropDown(false)}
                 >
                     {title}
                 </button>
                 {showNavDropDown && (
-                    <div className="relative">
+                    <div className="relative h-0 overflow-visible">
                         <div className="absolute top-0">
                             {options &&
                                 options.length > 0 &&
@@ -67,9 +74,9 @@ const SideMenu = ({ title, link, options }: TypeNavDropDown) => {
         <>
             <div className="w-fit flex bg-purple-100">
                 <div
-                    className="min-w-[150px] flex cursor-pointer whitespace-nowrap px-5 py-1 hover:bg-gray-100 hover:pl-7 ease-in-out"
+                    className="w-[200px] flex cursor-pointer whitespace-nowrap px-5 py-1 hover:bg-gray-100 hover:pl-7 ease-in-out"
                     onMouseEnter={() => setShowChildren(true)}
-                    onMouseLeave={(e) => setShowChildren(false)}
+                    onMouseLeave={() => setShowChildren(false)}
                 >
                     {link ? <Link to={link}>{title}</Link> : title}
                 </div>
@@ -86,11 +93,13 @@ const SideMenu = ({ title, link, options }: TypeNavDropDown) => {
                                     <div
                                         ref={submenuRef}
                                         key={idx}
-                                        className="bg bg-purple-100 min-w-[150px] flex cursor-pointer whitespace-nowrap px-5 py-1 hover:bg-gray-100 hover:pl-7 ease-in-out"
+                                        className="min-w-[200px] flex cursor-pointer whitespace-nowrap pl-10  py-1 bg-purple-100 hover:bg-gray-100 hover:pl-14 ease-in-out"
                                     >
                                         {option.link ? (
                                             <Link to={option.link}>
-                                                {option.name}
+                                                <h4 className="">
+                                                    {option.name}
+                                                </h4>
                                             </Link>
                                         ) : (
                                             option.name

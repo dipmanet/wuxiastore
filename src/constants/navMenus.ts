@@ -1,7 +1,3 @@
-/** @format */
-
-import React from 'react'
-
 interface typeNavMenu {
     id: number
     name: string
@@ -96,5 +92,32 @@ export const navMenus: typeNavMenu[] = [
                 ],
             },
         ],
+    },
+]
+
+export const navMenuCategories: typeNavMenu[] = [
+    {
+        id: 1,
+        name: `Today's Deals`,
+        link: '/daily-deals',
+        isExternal: false,
+        parent: null,
+        children: [],
+    },
+    {
+        id: 2,
+        name: 'Best Seller',
+        link: '/bestseller',
+        isExternal: false,
+        parent: null,
+        children: [],
+    },
+    {
+        id: 3,
+        name: 'Trending Books',
+        link: '/trending-books',
+        isExternal: false,
+        parent: null,
+        children: [],
     },
 ]

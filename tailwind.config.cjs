@@ -4,13 +4,19 @@ module.exports = {
     theme: {
         extend: {
             screens: {
-                xxs: '300px',
                 xs: '420px',
                 xxl: '1440px',
                 xxxl: '1660px',
             },
-            fontFamily: {},
-            colors: {},
+            fontFamily: {
+                inter: ['Inter', 'sans-serif'],
+                hevelta: ['Hevelta', 'sans-serif'],
+            },
+            colors: {
+                background1: 'white',
+                background2: '#232f3e',
+                background3: '#161619',
+            },
         },
     },
     plugins: [],
