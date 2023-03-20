@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 
 type Props = {
-    handleSearch: (searchKey: string) => void
+    handleSearch: (value: string) => void
     placeholder: string
     classString?: string
     textStyle?: string
@@ -15,12 +15,9 @@ const SearchBox = ({
     textStyle,
 }: Props) => {
     const [searchKeyVal, setSearchKeyVal] = useState('')
-
     const onSearch = (e: any) => {
         e.preventDefault()
-        console.log('search submite', searchKeyVal)
-
-        searchKeyVal.length > 0 && handleSearch(searchKeyVal)
+        handleSearch(searchKeyVal)
     }
 
     return (

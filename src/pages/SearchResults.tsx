@@ -1,15 +1,13 @@
-import { useLocation, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 
 const SearchResults = () => {
-    const searchParams = useLocation().search
-    const [query] = useSearchParams(searchParams)
-    console.log('test query', query.toString())
+    const [params] = useSearchParams()
 
     return (
         <div>
-            <div>SearchResults</div>
+            <h1>SearchResults</h1>
 
-            <h1 className="text-red-500">results for {query}</h1>
+            <h1 className="text-red-500">results for {params?.get('query')}</h1>
         </div>
     )
 }

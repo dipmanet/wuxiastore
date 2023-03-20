@@ -1,9 +1,9 @@
-import { navMenuCategories, navMenus } from '#src/constants/navMenus'
+import { navMenuCategories, navMenus } from '#/constants/navMenus'
 import NavDropdown from './Dropdowns/NavDropdown'
 const Navbar = () => {
     return (
         <>
-            <div className="bg-background3 w-full min-h-[53px] hidden md:flex">
+            <div className="bg-background-3 w-full min-h-[53px] hidden md:flex">
                 <div className="container flex justify-center lg:justify-between">
                     <div className="items-center hidden lg:flex">
                         {navMenus.length > 0 &&

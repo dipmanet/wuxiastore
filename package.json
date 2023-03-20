@@ -9,6 +9,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "framer": "^2.3.0",
         "notus-react": "^1.1.0",
         "path": "^0.12.7",
         "react": "^18.2.0",

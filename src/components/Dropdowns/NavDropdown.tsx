@@ -35,18 +35,16 @@ const NavDropdown = ({ title, link, options, menuColor }: TypeNavDropDown) => {
                 ref={dropdownRef}
                 className="flex flex-col h-full"
             >
-                <button
+                <div
                     className={`${
                         menuColor ? menuColor : 'text-black'
-                    } font-bold uppercase text-sm mx-2 h-full rounded outline-none focus:outline-none hover:text-red-500 ease-linear transition-all duration-150`}
-                    type="button"
+                    } inline-flex items-center font-bold uppercase text-sm  mx-2 h-full hover:text-red-500 ease-linear transition-all duration-150 cursor-pointer`}
                     onMouseOver={() => setShowNavDropDown(true)}
-                    // onMouseOut={() => setShowNavDropDown(false)}
                 >
                     {title}
-                </button>
+                </div>
                 {showNavDropDown && (
-                    <div className="relative h-0 overflow-visible">
+                    <div className="relative h-0">
                         <div className="absolute top-0">
                             {options &&
                                 options.length > 0 &&

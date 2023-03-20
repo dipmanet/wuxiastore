@@ -1,4 +1,4 @@
-import Modal from '../components/smallmodel'
+import Modal from '#components/smallmodel'
 
 const HomePage = () => {
     return (

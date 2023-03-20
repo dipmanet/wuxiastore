@@ -13,7 +13,12 @@ module.exports = {
                 hevelta: ['Hevelta', 'sans-serif'],
             },
             colors: {
-                background1: 'white',
+                background: {
+                    1: '#FFFFFF',
+                    2: '#232F3e',
+                    3: '#161619',
+                },
+                background1: '#FFFFFF',
                 background2: '#232f3e',
                 background3: '#161619',
             },
